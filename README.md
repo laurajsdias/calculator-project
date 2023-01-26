@@ -12,9 +12,9 @@ Para testar a aplicação localmente, foram criados os arquivos [Dockerfile](Doc
 
 ### Para rodar:
 
-1. docker build -t calculadora .
-2. docker run -it -p8080:8080 calculadora
-3. Acessar localhost:8080 no navegador de sua preferência
+1. `docker build -t calculadora .`
+2. `docker run -it -p8080:8080 calculadora`
+3. `Acessar localhost:8080 no navegador de sua preferência`
 
 
 ## 2. Deploy de S3 bucket utilizando Terraform
@@ -29,11 +29,11 @@ Feito o teste local da aplicação, o próximo passo foi criar o código Terrafo
 ### Para rodar:
 
 Pré-requisitos:
-- Possuir um arquivo ~/.aws/credentials com as variáveis AWS_ACCESS_KEY_ID E AWS_SECRET_ACCESS_KEY definidas. 
+- Possuir um arquivo ~/.aws/credentials com as variáveis **AWS_ACCESS_KEY_ID** e **AWS_SECRET_ACCESS_KEY** definidas. 
 
-1. cd terraform
-2. terraform init
-3. terraform apply (se todo o plan estiver ok, digite yes)
+1. `cd terraform`
+2. `terraform init`
+3. `terraform apply` (se todo o plan estiver ok, digite yes)
 
 
 ## 3. CI/CD para criação do sistema de Storage usando Terraform
@@ -45,7 +45,7 @@ Foi criado o arquivo [00_provision-infra.yml](.github/workflows/00_provision-inf
 ### Para rodar:
 
 Pré-requisitos:
-- Possuir os seguintes secrets criados no repositório do projeto: AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY.
+- Possuir os seguintes secrets criados no repositório do projeto: **AWS_ACCESS_KEY_ID** e **AWS_SECRET_ACCESS_KEY**.
 
 O workflow roda automaticamente caso haja push na branch 'infra' do repositório.
 
@@ -58,16 +58,16 @@ Foi criado o arquivo [01_deploy-app.yml](.github/workflows/01_deploy-app.yml). O
 ### Para rodar:
 
 Pré-requisitos:
-- Adicionar o seguinte secret no repositório do projeto: S3_BUCKET com o valor projeto-calculadora.
+- Adicionar o seguinte secret no repositório do projeto: **S3_BUCKET** com o valor **projeto-calculadora**.
 
 O workflow roda automaticamente caso haja push na branch 'main' do repositório.
 
 # Considerações Finais
 
-Diferencial 1: item 4 acima.
-Diferencial 2: item 3 acima.
-Diferencial 3: foi criado o módulo s3 com os resources separados para facilitar reuso.
+- [x] Diferencial 1: item 4 acima.
+- [x] Diferencial 2: item 3 acima.
+- [x] Diferencial 3: foi criado o módulo s3 com os resources separados para facilitar reuso.
 
-Decisões: separei o código do terraform na branch 'infra' para que o workflow do terraform não fosse iniciado a cada push na branch main. Por isso, defini que o workflow do terraform só rode quando houver push na branch 'infra'. 
+### Decisões
 
-
+Separei o código do terraform na branch 'infra' para que o workflow do terraform não fosse iniciado a cada push na branch main. Por isso, defini que o workflow do terraform só rode quando houver push na branch 'infra'. 
