@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,17 +12,19 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+
       - name: Install dependencies
         run: npm install
+
       - name: Run build
         run: npm run build
       
-      - name: Configurar AWS credentials 
+      - name: Configure AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
-          AWS_DEFAULT_REGION: 'sa-east-1'
+          aws-access-key-id: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          aws-secret-access-key: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+          aws-region: 'sa-east-1'
 
       - name: Upload build files to S3 bucket
         run: aws s3 sync build s3://${{ secrets.S3_BUCKET }}
