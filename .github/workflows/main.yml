@@ -16,6 +16,10 @@ jobs:
         run: npm install
       - name: Run build
         run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-folder
+          path: build
 
   deploy:
     runs-on: ubuntu-latest
@@ -26,5 +30,8 @@ jobs:
       AWS_DEFAULT_REGION: 'sa-east-1'
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-folder
       - name: Upload to S3
         run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET}}
