@@ -1,29 +1,21 @@
-Teste: CICD Projeto Calculadora
+# Projeto: Teste Técnico Tatic
+
+- Build e deploy do projeto Calculadora fornecido pela empresa localmente.
+- Deploy de S3 bucket utilizando Terraform
+- CI/CD para criação do sistema de Storage usando Terraform
+- CI/CD para deploy da aplicação no bucket S3 criado pelo Terraform na AWS
 
 
-Calculator
----
-<img src="Logotype primary.png" width="60%" height="60%" />
+## 1. Build e deploy local
 
-Created with *create-react-app*. See the [full create-react-app guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+Para testar a aplicação localmente, foram criados os arquivos [Dockerfile](Dockerfile) e [nginx.conf](nginx.conf). O Dockerfile realiza o build para gerar os arquivos estáticos na pasta build e depois serve esses arquivos utilizando nginx na porta 8080.
 
+### Para rodar:
 
+1. docker build -t calculadora .
+2. docker run -it -p8080:8080 calculadora
+3. Acessar localhost:8080 no navegador de sua preferência
 
-Try It
----
+## 2. CI/CD para criação do sistema de Storage usando Terraform
 
-[ahfarmer.github.io/calculator](https://ahfarmer.github.io/calculator/)
-
-
-
-Install
----
-
-`npm install`
-
-
-
-Usage
----
-
-`npm start`
+Testado 
