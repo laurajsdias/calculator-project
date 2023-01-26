@@ -1,4 +1,4 @@
-name: Create and configure S3 bucket website hosting
+name: Create S3 bucket 
 
 on:
   push:
@@ -7,16 +7,11 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Provision S3'
     runs-on: ubuntu-latest
     defaults:
       run: 
         working-directory: ./terraform
-
-    # # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    # defaults:
-    #   run:
-    #     shell: bash
 
     steps:
     - name: Checkout
