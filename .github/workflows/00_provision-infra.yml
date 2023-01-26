@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - infra
+  
+  workflow_dispatch:
 
 jobs:
   terraform:
