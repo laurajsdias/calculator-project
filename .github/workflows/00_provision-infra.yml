@@ -3,7 +3,7 @@ name: Create S3 bucket
 on:
   push:
     branches:
-      - main
+      - infra
 
 jobs:
   terraform:
