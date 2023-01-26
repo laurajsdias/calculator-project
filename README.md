@@ -61,6 +61,7 @@ Pré-requisitos:
 - Adicionar o seguinte secret no repositório do projeto: **S3_BUCKET** com o valor **projeto-calculadora**.
 
 O workflow roda automaticamente caso haja push na branch 'main' do repositório.
+Para acessar o site, acesse o bucket criado, depois em Propriedades, copie e cole o endereço do endpoint no navegador. O site estará acessível.
 
 # Considerações Finais
 
