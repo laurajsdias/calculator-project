@@ -10,7 +10,7 @@ resource "aws_s3_bucket_website_configuration" "calculadora" {
   }
 }
 
-resource "aws_s3_bucket_acl" "calculadora_acl" {
+resource "aws_s3_bucket_acl" "acl" {
   bucket = aws_s3_bucket.calculadora.id
   acl = "public-read"
 }
